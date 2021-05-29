@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" type="image/icon type" href="https://img.icons8.com/nolan/2x/favorite-cart.png">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a href="#" class="nav-logo">
+        <img src="https://cdn.pixabay.com/photo/2016/11/07/13/04/yoga-1805784_960_720.png" alt="footer_logo"
+             class="img-fluid">
+    </a>
+    <a class="navbar-brand" href="">BIDISHEK</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="#" id="Dropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="Dropdown">
+
+                    <a class="dropdown-item" href="Babies&Toys">Babies & Toys</a>
+                    <a class="dropdown-item" href="Electronic_Accessories">Electronic Accessories</a>
+                    <a class="dropdown-item" href="Electronic_Gadgets">Electronic Gadgets</a>
+                    <a class="dropdown-item" href="Groceries">Groceries</a>
+                    <a class="dropdown-item" href="Health&Beauty">Health & Beauty</a>
+                    <a class="dropdown-item" href="Home_Appliances">Home Appliances</a>
+                    <a class="dropdown-item" href="Liquor">liquor</a>
+                    <a class="dropdown-item" href="MenFashion">Men's Fashion</a>
+                    <a class="dropdown-item" href="Sports&Outdoor">Sports & Outdoor</a>
+                    <a class="dropdown-item" href="WomenFashion">Women's Fashion</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="cart">Cart</a>
+            </li>
+            <li class="nav-item active dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    My Account
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% if user.is_authenticated %}
+                    <a class="dropdown-item" href="">My Profile</a>
+                    <a class="dropdown-item" href="">Logout</a>
+                    {% else %}
+                    <a class="dropdown-item" href="register">Register</a>
+                    <a class="dropdown-item" href="login">Login</a>
+                    {% endif %}
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about">About Us</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="" method="GET">
+            <input name="keyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                   required>
+            <button class="btn btn-danger my-2 my-sm-0" type="submit"><i class="fa fa-search p-1"></i>Search</button>
+        </form>
+    </div>
+</nav>
+<div class="container">
+
+    <div class="col-md-6">
+        <div class="card">
+            {% for message in messages %}
+            <script>
+                    window.onload = function() {
+                        alert('{{ message }}');
+                    }
+
+
+
+            </script>
+            {% endfor %}
+            <form class="box" action="login" method="post">
+                {% csrf_token %}
+                <h1>Login</h1>
+                <p class="text-primary"> Please enter your username and password!</p>
+                <input type="text" name="username" id="username" placeholder="Username">
+                <input type="password" name="password" id="password" placeholder="Password">
+                <a href="register">For Sign Up</a>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="dk-footer-box-info">
+                <a href="index.html" class="footer-logo">
+                    <img src="https://cdn.pixabay.com/photo/2016/11/07/13/04/yoga-1805784_960_720.png" alt="footer_logo"
+                         class="img-fluid">
+                </a>
+                <p style="color: white;">
+                    Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum
+                    generator.
+                </p>
+                <!-- start Social links -->
+                <div class="footer-social-link">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Social links -->
+            </div>
+        </div>
+        <div class="col-md-8"
+             style="background-color: #2f2d2d; color: #d1d1d1; text-align: center; padding: 3rem; font-family: cursive;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Payment Methods</h2>
+                        <h4>Khalti</h4>
+                        <h4>Esewa</h4><br><br>
+                        <h2>Useful Links</h2>
+                        <a href="">Home</a><br>
+                        <a href="">Catagories</a><br>
+                        <a href="">About</a>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Varified By:</h2>
+                        <img src="https://qph.fs.quoracdn.net/main-qimg-6af096e6f8d675121380bcd02ab656f6"
+                             style="height: 8rem;width: 12rem;"><br><br>
+                        <h2>Contacts</h2>
+                        <span>phone:</span><h5>056-685421</h5>
+                        <span>Email:</span><h5>diwasshreshtha36@gmail.com</h5>
+                    </div>
+                    <div class="col-md-12">
+                        <p>Copyright © 2019, bikramsubedi33@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+.nav-logo{
+            width: 8rem;
+            height: 5rem;
+            display: block;
+        }
+body {
+	    margin: 0;
+	    padding: 0;
+	    font-family: sans-serif;
+	   /* background-image: linear-gradient(217deg, rgba(255,345,0,.8), rgba(255,0,456,0) 70.71%),
+            linear-gradient(127deg, rgba(0,255,123,.8), rgba(0,255,789,0) 70.71%),
+            linear-gradient(336deg, rgba(0,221,255,.8), rgba(0,0,255,0) 70.71%);
+        */
+       background-image: url('https://img.freepik.com/free-vector/3d-isometric-e-commerce-concept-online-store_1441-2128.jpg');
+       background-repeat: no-repeat;
+       background-size: cover;
+       position: absolute;
+	}
+	.main{
+	    margin-top:40rem;
+	}
+
+	.box {
+	    width: 550px;
+	    padding: 40px;
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    background: #000;
+	    border-radius: 5%;
+	    border: 3px solid green;
+	    text-align: center;
+	    transition: 0.25s;
+	    margin-top: 100px
+	}
+
+	.box input[type="text"],
+	.box input[type="password"] {
+	    border: 0;
+	    background: none;
+	    display: block;
+	    margin: 20px auto;
+	    text-align: center;
+	    border: 2px solid #3498db;
+	    padding: 10px 10px;
+	    width: 250px;
+	    outline: none;
+	    color: white;
+	    border-radius: 24px;
+	    transition: 0.25s
+	}
+
+	.box h1 {
+	    color: white;
+	    text-transform: uppercase;
+	    font-weight: 500
+	}
+
+	.box input[type="text"]:focus,
+	.box input[type="password"]:focus {
+	    width: 300px;
+	    border-color: #2ecc71
+	}
+
+	.box input[type="submit"] {
+	    border: 0;
+	    background: none;
+	    display: block;
+	    margin: 20px auto;
+	    text-align: center;
+	    border: 2px solid #2ecc71;
+	    padding: 14px 40px;
+	    outline: none;
+	    color: white;
+	    border-radius: 24px;
+	    transition: 0.25s;
+	    cursor: pointer
+	}
+
+	.box input[type="submit"]:hover {
+	    background: #2ecc71
+	}
+
+.dk-footer-box-info {
+              position: relative;
+              background: #202020;
+              padding: 40px;
+              z-index: 2; }
+              .dk-footer-box-info .footer-social-link h3 {
+                color: #fff;
+                font-size: 24px;
+                margin-bottom: 25px; }
+              .dk-footer-box-info .footer-social-link ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0; }
+              .dk-footer-box-info .footer-social-link li {
+                display: inline-block; }
+              .dk-footer-box-info .footer-social-link a i {
+                display: block;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 40px;
+                background: #000;
+                margin-right: 5px;
+                color: #fff; }
+                .dk-footer-box-info .footer-social-link a i.fa-facebook {
+                  background-color: #3B5998; }
+                .dk-footer-box-info .footer-social-link a i.fa-twitter {
+                  background-color: #55ACEE; }
+                .dk-footer-box-info .footer-social-link a i.fa-google-plus {
+                  background-color: #DD4B39; }
+                .dk-footer-box-info .footer-social-link a i.fa-linkedin {
+                  background-color: #0976B4; }
+                .dk-footer-box-info .footer-social-link a i.fa-instagram {
+                  background-color: #B7242A; }
+
+
+	@media only screen and (max-width: 480px) {
+		body {
+		    background-image: none;
+		    background-color: green;
+		    margin-top: -10px;
+		}
+		.main{
+            margin-top:29rem;
+    	}
+		.box {
+			left: 0px;
+		    width: 100%;
+		    padding: 0px;
+		    margin-top: 50px ;
+
+		}
+		.box input[type="text"]:focus,
+		.box input[type="password"]:focus {
+	    	width: 275px;
+		}
+
+
+
+</style>
+</body>
+</html>

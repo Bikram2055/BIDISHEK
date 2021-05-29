@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>home</title>
+{% endblock %}
+
+{% block index %}
+
+<div>
+    <div>
+        <marquee direction="right"><h1>Welcome To Our Website</h1></marquee>
+    </div>
+    <div class="container p-3">
+        <img class="view"
+             src="https://img.freepik.com/free-vector/3d-isometric-e-commerce-concept-online-store_1441-2128.jpg"
+             alt="pic">
+    </div>
+
+    <section>
+
+        {% block content %}
+        {% endblock %}
+
+    </section>
+    <div class="container">
+        <h1>View Items</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for first in first%}
+            <div class="container bg-info col-md-3 p-3 supper">
+                <img src="{{first.image.url}}" style="height: 13rem; width: 13rem;">
+                <br><br>
+                <div class="text-center"><span class="title">{{first.name}}</span></div>
+                <div class="text-center">
+                    <div>
+                        <p class="mt-3">Price: Rs. {{first.price}}</p>
+                        <a href="cart/{{ first.slug }}" class="btn">
+                            <button class="button">Add To Cart</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+    <div class="col-4 offset-4" style="margin-left:9vw;">
+        <nav aria-label="...">
+            <ul class="pagination">
+
+                {% if first.has_previous%}
+                <li class="page-item">
+                    <a href="?page={{ first.previous_page_number }}" class="page-link">Previous</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+                {% endif %}
+
+                <li class="page-item">
+                    <a class="page-link" href="#">{{ first.number }}</a>
+                </li>
+
+                <!-- new -->
+                {% if first.has_next %}
+                <li class="page-item ">
+                    <a class="page-link" href="?page={{ first.next_page_number}}">Next</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">Next</span>
+                </li>
+                {% endif %}
+                <!--/new -->
+
+            </ul>
+        </nav>
+    </div>
+    <br><br>
+</div>
+
+
+{% endblock %}

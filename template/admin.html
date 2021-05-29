@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" type="image/icon type" href="https://img.icons8.com/nolan/2x/favorite-cart.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body class="container bg-secondary">
+
+
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-12 text-center bg-info">
+            <h3>Latest Orders</h3>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Order ID</th>
+                        <th>Order Items</th>
+                        <th>City</th>
+                        <th>Area</th>
+                        <th>Landmark</th>
+                        <th>Contact</th>
+                        <th>Ordered on</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in shipping %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{order.order.id}}</td>
+                        <td><ol>
+                        {% for orderitem in order.order.orderitems.all %}
+                            {% if orderitem.ordered == TRUE %}
+                            <li>
+                                {{orderitem.item.name}} ({{orderitem.quantity}})
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                        </ol></td>
+                        <td>{{order.city}}</td>
+                        <td>{{order.address}}</td>
+                        <td>{{order.landmark}}</td>
+                        <td>{{order.contact}}</td>
+                        <td>{{order.order.created}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

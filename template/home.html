@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container">
+    <h1>Category Items</h1>
+</div>
+<div class="container">
+    <div class="row">
+        {% for first in data%}
+        <div class="container bg-info col-md-3 p-3 supper">
+            <img src="{{first.image.url}}" style="height: 13rem; width: 13rem;">
+            <br><br>
+            <div class="text-center"><span class="title">{{first.name}}</span></div>
+
+            <div class="text-center">
+                <div style="float: left;">
+                    <p class="mt-3">Price: Rs. {{first.price}}</p>
+                    <a href="cart/{{ first.slug }}" data-product={{first.id}} data-action="add" class="btn"
+                       style="background-color: #09ffb6; border:1px solid gold;">Add To Cart</a>
+                </div>
+                <div style='text-align: center; margin: 0.8rem;'>
+                    <button onclick="incrementValue()" style="width: 3rem; background-color: #09ffb6; border: none;">+
+                    </button>
+                    <br>
+                    <input type="number" id="input{{first.id}}" value="1" style="width: 3rem; text-align: center;"><br>
+                    <button onclick="decrementValue()" style="width: 3rem; background-color: #09ffb6; border: none;">-
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block search %}
+<div class="container">
+    <h1>Search Items</h1>
+</div>
+<div class="container">
+    <div class="row">
+        {% for first in data%}
+        <div class="container bg-info col-md-3 p-3 supper">
+            <img src="{{first.image.url}}" style="height: 13rem; width: 13rem;">
+            <br><br>
+            <div class="text-center"><span class="title">{{first.name}}</span></div>
+
+            <div class="text-center">
+                <div>
+                    <p class="mt-3">Price: Rs. {{first.price}}</p>
+                    <a href="cart/{{ first.slug }}" class="btn">
+                        <button class="button">Add To Cart</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div><br>
+{% endblock %}

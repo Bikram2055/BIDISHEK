@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block profile %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Detail Information</h3><hr>
+            <div style="height:10rem; width: 10rem;">
+                <img src="//joeschmoe.io/api/v1/{{user.username}}" alt="" class="border rounded-circle">
+            </div>
+            <br>
+            <p><span class="font-weight-bold">Name: </span> {{user.first_name}} {{user.last_name}}</p>
+            <p><span class="font-weight-bold">Username: </span> {{user.username}}</p>
+            <p><span class="font-weight-bold">Email: </span> {{user.email}}</p>
+            <p><span class="font-weight-bold">Joined on: </span> {{user.date_joined}}</p>
+        </div>
+        <div class="col-md-8 text-center">
+            <h3>Previous Orders</h3>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Order ID</th>
+                        <th>Amount</th>
+                        <th>Ordered on</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{order.id}}</td>
+                        <td>{{order.get_totals}}</td>
+                        <td>{{order.created}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block cart%}
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h4>Items in my cart</h4>
+            <hr>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Rate</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cart in cart%}
+                <tr>
+                    <td>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div>
+                                        <img style="height: 4.4rem; width: 4.4rem;" src="{{ cart.item.image.url }}">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-left">
+                                    <p>{{ cart.item.name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{ cart.item.price }}
+                        <p class="pt-3">Qty.:<span class="text-danger">{{ cart.quantity}}</span></p>
+                    </td>
+                    <td>{{ cart.subtotal }}</td>
+                    <td>
+                        <a href="cart/inc/{{ cart.id }}" class="btn btn-primary width"> + </a>
+                        <a href="cart/dec/{{ cart.id }}" class="btn btn-warning width"> - </a>
+                        <a href="cart/remove/{{ cart.id }}" class="btn btn-danger width"> x </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th colspan="2" class="text-right">Total Rs.</th>
+                    <th>{{ order_total | floatformat:2 }}</th>
+
+                </tr>
+
+                <tr>
+                    <th><a class="btn btn-info" href="checkout"> Checkout </a></th>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock %}
