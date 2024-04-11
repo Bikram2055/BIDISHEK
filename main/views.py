@@ -435,3 +435,7 @@ def admin(request):
         "shipping": shipping,
     }
     return render(request, 'admin.html', context)
+
+
+def pan():
+    return "kfdslkdslk"
